@@ -1,0 +1,38 @@
+﻿@model System.Collections.Generic.IEnumerable<WebApplication2.Models.User>
+
+@{
+    ViewBag.Title = "title";
+    Layout = "_Layout";
+}
+
+<div class="row">
+    <div class="col-3"></div>
+    <div class="col-6">
+        <a asp-controller="User" asp-action="Create" class="btn btn-outline-light">Create</a>
+        <table class="table table-striped table-hover">
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Country</th>
+                <th>Age</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            @foreach (var user in Model)
+            {
+                <tr>
+                    <td>@user.Name</td>
+                    <td>@user.Country</td>
+                    <td>@user.Age</td>
+                    <td>
+                        <a asp-controller="User" asp-action="Edit" asp-route-userId="@user.Id">edit</a> | 
+                        <a asp-controller="User" asp-action="Details" asp-route-userId="@user.Id">Detais</a>
+                    </td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    </div>
+    <div class="col-3"></div>
+</div>
